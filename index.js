@@ -1,28 +1,29 @@
-function add(a, b) {
-  return a + b;
+const currentOperandDisplay = document.querySelector('.current-operand');
+const previousOperandDisplay = document.querySelector('.prev-operand');
+const numberButtons = document.querySelectorAll('.number-btn');
+const operatorButtons = document.querySelectorAll('.operator-btn');
+const equalButton = document.getElementById('equal-btn');
+const dotButton = document.querySelector('dot-btn');
+
+function updateDispla() {
+
 }
 
-function subtract(a, b) {
-  return a - b;
+function appendNumber() {
+
 }
 
-function multiply(a, b) {
-  return a * b;
+function deleteNumber() {
+
 }
 
-function divide(a, b) {
-  return a / b;
+function clear() {
+
 }
 
-function modulus(a, b) {
-  return a % b;
+function appendDot() {
+  
 }
-
-let operator = "";
-let firstNumber = "";
-let secondNumber = "";
-let result = "";
-let displayValue = "";
 
 function operate(operator, firstNumber, secondNumber) {
   let operateResult = 0;
@@ -46,13 +47,53 @@ function operate(operator, firstNumber, secondNumber) {
   return operateResult;
 }
 
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  if (b === 0) {
+    return "Infinity";
+  } 
+  return a / b;
+}
+
+function modulus(a, b) {
+  return a % b;
+}
+
+/**
+ let operator = "";
+let firstNumber = "";
+let secondNumber = "";
+let result = "";
+let displayValue = "";
+
+
+
 const display = document.querySelector('.screen-display');
-const numberBtns = document.querySelectorAll('.number-btn');
+const calcButtons = document.querySelectorAll('.btn');
 
 display.textContent = displayValue;
 
-numberBtns.forEach(btn => btn.addEventListener('click', displayNumbers));
+calcButtons.forEach(btn => btn.addEventListener('click', displayNumbers));
 
-function displayNumbers() {
-    console.log('clicked a button');
+function displayNumbers(event) {
+  const clickedButtonElement = event.target;
+  const clickedButtonContent = clickedButtonElement.textContent;
+  if (clickedButton === '=') {
+    // Check validity
+    // Parse string
+  }
+  display.textContent += clickedButtonContent;
+  console.log(`Clicked button: ${clickedButtonContent}`);
 }
+ */

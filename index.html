@@ -11,37 +11,40 @@
         <h1 class="sr-only">JavaScript Calculator</h1>
         <section class="calculator">
             <div class="screen">
-                <span class="screen-display"></span>
+                <div class="screen-display">
+                    <span class="prev-operand"></span>
+                    <span class="current-operand"></span>
+                </div>
             </div>
             <div class="controls flex">
                 <div class="control-row flex">
-                    <button class="btn">AC</button>
-                    <button class="btn">DEL</button>
-                    <button class="btn">%</button>
-                    <button class="btn">+</button>
+                    <button type="button" class="btn">AC</button>
+                    <button type="button" class="btn">DEL</button>
+                    <button type="button" class="btn">%</button>
+                    <button type="button" class="btn operator-btn">+</button>
                 </div>
                 <div class="control-row flex">
-                    <button class="btn number-btn">1</button>
-                    <button class="btn number-btn">2</button>
-                    <button class="btn number-btn">3</button>
-                    <button class="btn">x</button>
+                    <button type="button" class="btn number-btn">1</button>
+                    <button type="button" class="btn number-btn">2</button>
+                    <button type="button" class="btn number-btn">3</button>
+                    <button type="button" class="btn operator-btn">x</button>
                 </div>
                 <div class="control-row flex">
-                    <button class="btn number-btn">4</button>
-                    <button class="btn number-btn">5</button>
-                    <button class="btn number-btn">6</button>
-                    <button class="btn">/</button>
+                    <button type="button" class="btn number-btn">4</button>
+                    <button type="button" class="btn number-btn">5</button>
+                    <button type="button" class="btn number-btn">6</button>
+                    <button type="button" class="btn operator-btn">/</button>
                 </div>
                 <div class="control-row flex">
-                    <button class="btn number-btn">7</button>
-                    <button class="btn number-btn">8</button>
-                    <button class="btn number-btn">9</button>
-                    <button class="btn">-</button>
+                    <button type="button" class="btn number-btn">7</button>
+                    <button type="button" class="btn number-btn">8</button>
+                    <button type="button" class="btn number-btn">9</button>
+                    <button type="button" class="btn operator-btn">-</button>
                 </div>
                 <div class="control-row flex">
-                    <button class="btn number-btn">0</button>
-                    <button class="btn">.</button>
-                    <button class="btn" id="equals-btn">=</button>
+                    <button type="button" class="btn number-btn">0</button>
+                    <button type="button" class="btn dot-btn">.</button>
+                    <button type="button" class="btn equal-btn" id="equal-btn">=</button>
                 </div>
             </div>
         </section>
