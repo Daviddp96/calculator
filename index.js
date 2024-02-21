@@ -3,48 +3,108 @@ const previousOperandDisplay = document.querySelector('.prev-operand');
 const numberButtons = document.querySelectorAll('.number-btn');
 const operatorButtons = document.querySelectorAll('.operator-btn');
 const equalButton = document.getElementById('equal-btn');
-const dotButton = document.querySelector('dot-btn');
+const dotButton = document.querySelector('.dot-btn');
 
-function updateDispla() {
+let currentOperand = '';
+let previousOperand = '';
+let operation = null;
 
+numberButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+      appendNumber(btn.textContent);
+      updateDisplay();
+  })
+});
+
+operatorButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    selectOperator(btn.textContent);
+    updateDisplay();
+  })
+});
+
+equalButton.addEventListener('click', operate);
+dotButton.addEventListener('click', appendDot);
+
+
+function updateDisplay() {
+  currentOperandDisplay.textContent = currentOperand;
+  previousOperandDisplay.textContent = previousOperand + ' ' + (operation || '');
 }
 
-function appendNumber() {
+function appendNumber(number) {
+  if (number === '.' && currentOperand.includes('.')) {
+    return;
+  }
+  currentOperand = currentOperand.toString() + number.toString();
+}
 
+function selectOperator(selectedOperator) {
+  if (currentOperand === '') {
+    return;
+  }
+  if (previousOperand !== '') {
+    operate();
+  }
+  operation = selectedOperator;
+  previousOperand = currentOperand;
+  currentOperand = '';
 }
 
 function deleteNumber() {
-
+  currentOperand = currentOperand.toString().slice(0, -1);
+  updateDisplay();
 }
 
 function clear() {
-
+  currentOperand = '';
+  previousOperand = '';
+  operation = null;
+  updateDisplay();
 }
 
 function appendDot() {
-  
+  if (currentOperand.includes('.')) {
+    return
+  };
+  if (currentOperand === '') { 
+    currentOperand = '0';
+  }
+  currentOperand += '.';
+  updateDisplay();
 }
 
-function operate(operator, firstNumber, secondNumber) {
+function operate() {
   let operateResult = 0;
-  switch (operator) {
+  
+  const curr = parseFloat(currentOperand);
+  const prev = parseFloat(previousOperand);
+
+  if (isNaN(currentOperand) || isNaN(previousOperand)) {
+    return;
+  }
+
+  switch (operation) {
     case "+":
-      operateResult = add(firstNumber, secondNumber);
+      operateResult = add(curr, prev);
       break;
     case "-":
-      operateResult = subtract(firstNumber, secondNumber);
+      operateResult = subtract(curr, prev);
       break;
     case "*":
-      operateResult = multiply(firstNumber, secondNumber);
+      operateResult = multiply(curr, prev);
       break;
     case "/":
-      operateResult = divide(firstNumber, secondNumber);
+      operateResult = divide(curr, prev);
       break;
     case "%":
-      operateResult = modulus(firstNumber, secondNumber);
+      operateResult = modulus(curr, prev);
       break;
   }
-  return operateResult;
+  currentOperand = operateResult;
+  operation = undefined;
+  previousOperand = '';
+  updateDisplay();
 }
 
 function add(a, b) {
@@ -56,44 +116,20 @@ function subtract(a, b) {
 }
 
 function multiply(a, b) {
-  return a * b;
+  console.log(a, b);
+  console.log(a * b);
+  return b * a;
 }
 
 function divide(a, b) {
-  if (b === 0) {
+  console.log(a , b);
+  if (a === 0) {
+    console.log('b === 0');
     return "Infinity";
   } 
-  return a / b;
+  return (b / a).toFixed(2);
 }
 
 function modulus(a, b) {
   return a % b;
 }
-
-/**
- let operator = "";
-let firstNumber = "";
-let secondNumber = "";
-let result = "";
-let displayValue = "";
-
-
-
-const display = document.querySelector('.screen-display');
-const calcButtons = document.querySelectorAll('.btn');
-
-display.textContent = displayValue;
-
-calcButtons.forEach(btn => btn.addEventListener('click', displayNumbers));
-
-function displayNumbers(event) {
-  const clickedButtonElement = event.target;
-  const clickedButtonContent = clickedButtonElement.textContent;
-  if (clickedButton === '=') {
-    // Check validity
-    // Parse string
-  }
-  display.textContent += clickedButtonContent;
-  console.log(`Clicked button: ${clickedButtonContent}`);
-}
- */
