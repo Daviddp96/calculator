@@ -4,6 +4,8 @@ const numberButtons = document.querySelectorAll('.number-btn');
 const operatorButtons = document.querySelectorAll('.operator-btn');
 const equalButton = document.getElementById('equal-btn');
 const dotButton = document.querySelector('.dot-btn');
+const delButton = document.getElementById('del-btn');
+const acButton = document.getElementById('ac-btn');
 
 let currentOperand = '';
 let previousOperand = '';
@@ -25,7 +27,8 @@ operatorButtons.forEach((btn) => {
 
 equalButton.addEventListener('click', operate);
 dotButton.addEventListener('click', appendDot);
-
+delButton.addEventListener('click', deleteNumber);
+acButton.addEventListener('click', clear)
 
 function updateDisplay() {
   currentOperandDisplay.textContent = currentOperand;
@@ -86,19 +89,19 @@ function operate() {
 
   switch (operation) {
     case "+":
-      operateResult = add(curr, prev);
+      operateResult = add(prev, curr);
       break;
     case "-":
-      operateResult = subtract(curr, prev);
+      operateResult = subtract(prev, curr);
       break;
     case "*":
-      operateResult = multiply(curr, prev);
+      operateResult = multiply(prev, curr);
       break;
     case "/":
-      operateResult = divide(curr, prev);
+      operateResult = divide(prev, curr);
       break;
     case "%":
-      operateResult = modulus(curr, prev);
+      operateResult = modulus(prev, curr);
       break;
   }
   currentOperand = operateResult;
@@ -117,17 +120,15 @@ function subtract(a, b) {
 
 function multiply(a, b) {
   console.log(a, b);
-  console.log(a * b);
-  return b * a;
+  return a * b;
 }
 
 function divide(a, b) {
-  console.log(a , b);
   if (a === 0) {
     console.log('b === 0');
     return "Infinity";
   } 
-  return (b / a).toFixed(2);
+  return (a / b).toFixed(2);
 }
 
 function modulus(a, b) {
