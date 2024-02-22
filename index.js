@@ -84,6 +84,7 @@ function operate() {
   const prev = parseFloat(previousOperand);
 
   if (isNaN(currentOperand) || isNaN(previousOperand)) {
+    console.log(currentOperand, previousOperand)
     return;
   }
 
@@ -111,15 +112,23 @@ function operate() {
 }
 
 function add(a, b) {
+  if (isNaN(b)) {
+    b = 0;
+  }
   return a + b;
 }
 
 function subtract(a, b) {
+  if (isNaN(b)) {
+    b = 0;
+  }
   return a - b;
 }
 
 function multiply(a, b) {
-  console.log(a, b);
+  if (isNaN(b)) {
+    b = 1;
+  }
   return a * b;
 }
 
@@ -128,9 +137,15 @@ function divide(a, b) {
     console.log('b === 0');
     return "Infinity";
   } 
+  if (isNaN(b)) {
+    b = 1;
+  }
   return (a / b).toFixed(2);
 }
 
 function modulus(a, b) {
+  if (isNaN(b)) {
+    b = 1;
+  }
   return a % b;
 }

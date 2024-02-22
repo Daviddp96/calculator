@@ -6,6 +6,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
@@ -15,7 +16,12 @@ body {
 }
 
 .sr-only {
-    display: none;
+    position: absolute ;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    top: auto;
+    overflow: hidden;
 }
 
 .calculator {
@@ -24,7 +30,7 @@ body {
     align-items: center;
     justify-content: center;
     width: max-content;
-    margin-bottom: 5rem;
+    margin-bottom: 2.5rem;
     margin-top: 2rem;
     padding: 1rem;
     border-radius: 1rem;
@@ -71,6 +77,25 @@ body {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
 }
 
+.btn:hover,
+.btn:active {
+    background-color: rgba(255, 255, 255, 0.184);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+#ac-btn,
+#del-btn {
+    background-color: rgba(190, 74, 74, 0.693);
+}
+
+#ac-btn:hover,
+#del-btn:hover {
+    background-color: rgba(182, 106, 106, 0.786)
+}
+
 .controls {
     display: flex;
     flex-direction: column;
@@ -85,4 +110,18 @@ body {
 
 #equal-btn {
     flex-grow: 1;
+}
+
+.attribution {
+    color:  white;;
+}
+
+.attribution a {
+    color: yellow;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.attribution a:hover {
+    color: goldenrod;
 }
