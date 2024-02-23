@@ -1,7 +1,7 @@
 # JavaScript Calculator
 ### MVP v1.0
 
-![mvp1-preview](./mvpv1.png)
+![mvp1-preview](./mvp1.png)
 
 This webpage is a digital version a JavaScript Calculator. It allows users to make simple arithmetic operations by clicking on the buttons.
 
